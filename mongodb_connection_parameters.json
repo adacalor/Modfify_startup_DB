@@ -1,0 +1,6 @@
+{
+ "name_connection": "localhost",
+ "port_connection": 27017,
+ "name_database": "enterprises",
+ "name_collection": "startups"
+}
