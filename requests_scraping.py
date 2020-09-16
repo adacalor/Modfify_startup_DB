@@ -72,7 +72,7 @@ def requests_scraping(website):
     ####
     try:
         #html_orig = requests.get(website, timeout=2, headers={'User-Agent': user_agent})
-        html_orig = requests.get(website, timeout=2, headers={'User-Agent': user_agent})
+        html_orig = requests.get(website, timeout=(2,3), headers={'User-Agent': user_agent})
         bsObj = BeautifulSoup(html_orig.content, 'html.parser')
         tab_descr = []
         content_page_1 = cleaner(html_orig.content)
@@ -89,7 +89,7 @@ def requests_scraping(website):
             for link in list( set(tab_link) )[0:100]:
                 verif_link = re.findall("http", link)
                 if verif_link:
-                    html = requests.get(link, timeout=1, headers={'User-Agent': user_agent})
+                    html = requests.get(link, timeout=(2,3), headers={'User-Agent': user_agent})
                     content = cleaner(html.content)
                     if content:
                         tab_descr.append("{}".format(content))
@@ -97,14 +97,14 @@ def requests_scraping(website):
                     #correct_link = "{}{}".format(website, link)
                     correct_link = urljoin( html_orig.url, link )
                     try:
-                        html = requests.get(correct_link, timeout=1, headers={'User-Agent': user_agent})
+                        html = requests.get(correct_link, timeout=(2,3), headers={'User-Agent': user_agent})
                         content = cleaner(html.content)
                         if content:
                             tab_descr.append("{}".format(content))
                     except:
                         correct_link = re.sub("http", "https", correct_link)
                         try:
-                            html = requests.get(correct_link, timeout=1, headers={'User-Agent': user_agent})
+                            html = requests.get(correct_link, timeout=(2,3), headers={'User-Agent': user_agent})
                             content = cleaner(html.content)
                             if content:
                                 tab_descr.append("{}".format(content))
