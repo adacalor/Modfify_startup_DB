@@ -19,7 +19,7 @@ import re
 
 import coloredlogs, logging
 coloredlogs.install()
-logging.setLevel(logging.WARNING)
+
 
 from stop_words import get_stop_words
 

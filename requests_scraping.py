@@ -58,7 +58,7 @@ liste_terme = ["about",
 
 def requests_scraping(website):
     url_web = "{}".format(website)
-    logging.info(url_web)
+    #logging.info(url_web)
     data_website = {
             "url_website": website,
             "description": "NaN"
@@ -86,7 +86,7 @@ def requests_scraping(website):
                     if ((terme in lien) and not ("linkedin.com" in lien) and not ("twitter" in lien)):
                         tab_link.append(url.attrs["href"])
 
-            for link in list( set(tab_link) )[0:50]:
+            for link in list( set(tab_link) )[0:100]:
                 verif_link = re.findall("http", link)
                 if verif_link:
                     html = requests.get(link, timeout=1, headers={'User-Agent': user_agent})
@@ -109,7 +109,8 @@ def requests_scraping(website):
                             if content:
                                 tab_descr.append("{}".format(content))
                         except:
-                            logging.info("Error link" + str(correct_link))
+                            #logging.info("Error link" + str(correct_link))
+                            pass
                     
 
             data_website = {
