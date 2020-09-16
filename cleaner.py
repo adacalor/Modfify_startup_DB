@@ -51,6 +51,7 @@ def cleaner(text) :
         # drop blank lines
         text = '\n'.join(chunk for chunk in chunks if chunk)
         
+        text = text_whitout_accents_and_lower(text)
         text = re.sub('\s+', ' ', text)
 
         text = re.sub('\xa0', ' ', text)
@@ -58,9 +59,16 @@ def cleaner(text) :
         text = re.sub('\x80', 'EUR ', text)
         text = re.sub('\x99', ' ', text)
         text = re.sub('\n', ' ', text)
-        text = text_whitout_accents_and_lower(text)
+        
 
     except:
         text = " "
 
     return(text)
+
+
+
+
+
+
+
